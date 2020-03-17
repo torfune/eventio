@@ -4,9 +4,15 @@ import { COLOR } from '../constants'
 
 interface Props {
   children: ReactNode
+  className?: string
+  type?: 'button' | 'submit' | 'reset'
 }
 
-const Button: FC<Props> = ({ children }) => <Container>{children}</Container>
+const Button: FC<Props> = ({ children, className, type }) => (
+  <Container className={className} type={type}>
+    {children}
+  </Container>
+)
 
 const Container = styled.button`
   background: ${COLOR.GREEN};
@@ -21,7 +27,7 @@ const Container = styled.button`
   font-weight: 600;
   font-size: 1.4rem;
   letter-spacing: 0.2rem;
-  transition: background-color 100ms;
+  transition: background-color 150ms;
 
   :hover {
     background: ${COLOR.GREEN_HOVER};
