@@ -8,7 +8,7 @@ interface Props {
 const Logo: FC<Props> = ({ color }) => <Container color={color}>E.</Container>
 
 const Container = styled.p<{ color: string }>`
-  font-size: 2rem;
+  font-size: 4rem;
   color: ${props => props.color};
   font-weight: 600;
 `

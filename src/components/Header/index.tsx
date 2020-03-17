@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { FC, ReactNode } from 'react'
 import Logo from './Logo'
+import { HEADER_HEIGHT } from '../../constants'
 
 interface Props {
   backgroundColor: string
@@ -27,7 +28,11 @@ const Container = styled.div<{ background: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 3rem;
+  padding: 0 6rem;
+  position: fixed;
+  width: 100vw;
+  height: ${HEADER_HEIGHT};
+  z-index: 1;
 `
 
 export default Header

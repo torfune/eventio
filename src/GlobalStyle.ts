@@ -1,10 +1,17 @@
 import { createGlobalStyle } from 'styled-components'
+import { COLOR } from './constants'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Hind';
     src: url('/fonts/Hind-Regular.ttf') format('truetype');
     font-weight: 400;
+  }
+
+  @font-face {
+    font-family: 'Hind';
+    src: url('/fonts/Hind-Medium.ttf') format('truetype');
+    font-weight: 500;
   }
 
   @font-face {
@@ -26,13 +33,30 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
+  html {
+    font-size: 62.5%;
+  }
+
   body {
     font-size: 1.6rem;
     font-family: 'Hind', sans-serif;
+    color: ${COLOR.GREY};
   }
 
-  p {
-    font-size: 1rem;
+  h1 {
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    margin-bottom: 4rem;
+    color: ${COLOR.GREY_LIGHT};
+    font-weight: 500;
+    font-size: 1.8rem;
+  }
+
+  button {
+    padding: 0;
   }
 `
 

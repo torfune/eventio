@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { COLOR } from '../constants'
 
 const SignUpMessage = () => (
   <Container>
@@ -7,15 +8,14 @@ const SignUpMessage = () => (
 )
 
 const Container = styled.p`
-  color: #888;
+  color: ${COLOR.GREY};
   display: flex;
   align-items: center;
 
   > span {
     margin-left: 1rem;
-    color: #444;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
   }
 `
 
