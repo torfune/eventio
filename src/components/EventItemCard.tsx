@@ -2,40 +2,31 @@ import styled from 'styled-components'
 import { FC } from 'react'
 import EventItem from '../api/types/EventItem'
 import { CARD_SHADOW, COLOR } from '../constants'
-import Button from './Button'
-import getEventButtonConfig from '../utils/getEventButtonColor'
-import { useSelector } from 'react-redux'
-import { RootState } from '../store/rootReducer'
+import EventItemButton from './EventItemButton'
 
 interface Props {
   eventItem: EventItem
 }
 
-const EventItemCard: FC<Props> = ({ eventItem }) => {
-  const user = useSelector((state: RootState) => state.auth.user)
-  const buttonConfig = getEventButtonConfig(eventItem, user!.id)
+const EventItemCard: FC<Props> = ({ eventItem }) => (
+  <Container>
+    <StartDate>
+      {new Date(eventItem.startsAt).toLocaleString('en-US')}
+    </StartDate>
+    <Title>{eventItem.title}</Title>
+    <Owner>{`${eventItem.owner.firstName} ${eventItem.owner.lastName}`}</Owner>
+    <Description>{eventItem.description}</Description>
 
-  return (
-    <Container>
-      <StartDate>
-        {new Date(eventItem.startsAt).toLocaleString('en-US')}
-      </StartDate>
-      <Title>{eventItem.title}</Title>
-      <Owner>{`${eventItem.owner.firstName} ${eventItem.owner.lastName}`}</Owner>
-      <Description>{eventItem.description}</Description>
+    <BottomRow>
+      <Capacity>
+        <img src="/icons/user.svg" />
+        <p>{`${eventItem.attendees.length} of ${eventItem.capacity}`}</p>
+      </Capacity>
 
-      <BottomRow>
-        <Capacity>
-          <img src="/icons/user.svg" />
-          <p>{`${eventItem.attendees.length} of ${eventItem.capacity}`}</p>
-        </Capacity>
-        <Button size="small" color={buttonConfig.color}>
-          {buttonConfig.text}
-        </Button>
-      </BottomRow>
-    </Container>
-  )
-}
+      <EventItemButton eventItem={eventItem} />
+    </BottomRow>
+  </Container>
+)
 
 const Container = styled.div`
   background: #fff;

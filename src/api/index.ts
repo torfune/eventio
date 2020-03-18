@@ -39,7 +39,37 @@ class Api {
     const { data: eventItems } = await Axios.get(`${API_URL}/events`, {
       headers: { APIKey: API_KEY },
     })
+
     return eventItems
+  }
+
+  static async joinEvent(
+    eventId: string,
+    accessToken: string
+  ): Promise<EventItem> {
+    const response = await Axios.post(
+      `${API_URL}/events/${eventId}/attendees/me`,
+      {},
+      {
+        headers: { APIKey: API_KEY, Authorization: accessToken },
+      }
+    )
+
+    return response.data
+  }
+
+  static async leaveEvent(
+    eventId: string,
+    accessToken: string
+  ): Promise<EventItem> {
+    const response = await Axios.delete(
+      `${API_URL}/events/${eventId}/attendees/me`,
+      {
+        headers: { APIKey: API_KEY, Authorization: accessToken },
+      }
+    )
+
+    return response.data
   }
 }
 

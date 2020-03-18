@@ -4,6 +4,7 @@ import {
   fetchStart,
   selectCategory,
   selectViewMode,
+  updateEvent,
 } from './actions'
 import EventItem from '../../api/types/EventItem'
 import filterEventItems from '../../utils/filterPastEvents'
@@ -24,19 +25,31 @@ const initialState: {
 
 export default createReducer(initialState, builder =>
   builder
-    // Fetch - Start
+    // Fetch all - Start
     .addCase(fetchStart, state => ({
       ...state,
       loading: true,
     }))
 
-    // Fetch - Success
+    // Fetch all - Success
     .addCase(fetchSuccess, (state, action) => ({
       ...state,
       loading: false,
       items: action.payload,
       filteredItems: filterEventItems(action.payload, state.category),
     }))
+
+    // Update one
+    .addCase(updateEvent, (state, action) => {
+      const newItems = state.items.map(event =>
+        event.id === action.payload.id ? action.payload : event
+      )
+      return {
+        ...state,
+        items: newItems,
+        filteredItems: filterEventItems(newItems, state.category),
+      }
+    })
 
     // Category - Select
     .addCase(selectCategory, (state, action) => ({

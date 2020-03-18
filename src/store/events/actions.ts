@@ -25,6 +25,12 @@ export const fetchSuccess = createAction(
     payload: eventItems,
   })
 )
+export const updateEvent = createAction(
+  'events/updateEvent',
+  (eventItem: EventItem) => ({
+    payload: eventItem,
+  })
+)
 
 // Thunks
 export const fetchAllEventItems = (): AppThunk => async dispatch => {
@@ -32,6 +38,36 @@ export const fetchAllEventItems = (): AppThunk => async dispatch => {
   try {
     const eventItems = await Api.getAllEventItems()
     dispatch(fetchSuccess(eventItems))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const leaveEvent = (eventId: string): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  const accessToken = getState().auth.accessToken
+  if (!accessToken) return
+
+  try {
+    const eventItem = await Api.leaveEvent(eventId, accessToken)
+    dispatch(updateEvent(eventItem))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const joinEvent = (eventId: string): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  const accessToken = getState().auth.accessToken
+  if (!accessToken) return
+
+  try {
+    const eventItem = await Api.joinEvent(eventId, accessToken)
+    dispatch(updateEvent(eventItem))
   } catch (error) {
     console.error(error)
   }

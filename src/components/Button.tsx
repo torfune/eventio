@@ -44,14 +44,13 @@ const Container = styled.button<{ size: ButtonSize; color: ButtonColor }>`
   border-radius: 0.3rem;
   font-weight: 600;
   font-size: 1.4rem;
-  transition: background-color 150ms;
   color: ${props => (props.color === 'grey' ? COLOR.GREY_TEXT_DARK : '#fff')};
   height: ${props => (props.size === 'big' ? '5rem' : '3rem')};
   letter-spacing: ${props => (props.size === 'big' ? '0.2rem' : '0.1rem')};
   width: ${props => (props.size === 'big' ? '22rem' : '10rem')};
 
   > img {
-    height: 2.5rem;
+    height: ${props => (props.size === 'big' ? '2.5rem' : '1.8rem')};
   }
 
   :hover {

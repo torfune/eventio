@@ -4,6 +4,7 @@ import { ButtonColor } from '../components/Button'
 interface ButtonConfig {
   text: string
   color: ButtonColor
+  action: 'join' | 'leave' | 'edit'
 }
 
 const getEventButtonConfig = (
@@ -15,6 +16,7 @@ const getEventButtonConfig = (
     return {
       text: 'EDIT',
       color: 'grey',
+      action: 'edit',
     }
   }
 
@@ -23,6 +25,7 @@ const getEventButtonConfig = (
     return {
       text: 'LEAVE',
       color: 'red',
+      action: 'leave',
     }
   }
 
@@ -30,6 +33,7 @@ const getEventButtonConfig = (
   return {
     text: 'JOIN',
     color: 'green',
+    action: 'join',
   }
 }
 

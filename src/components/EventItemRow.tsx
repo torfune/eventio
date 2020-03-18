@@ -2,35 +2,25 @@ import styled from 'styled-components'
 import { FC } from 'react'
 import EventItem from '../api/types/EventItem'
 import { COLOR, CARD_SHADOW } from '../constants'
-import Button from './Button'
-import { useSelector } from 'react-redux'
-import { RootState } from '../store/rootReducer'
-import getEventButtonConfig from '../utils/getEventButtonColor'
+import EventItemButton from './EventItemButton'
 
 interface Props {
   eventItem: EventItem
 }
 
-const EventItemRow: FC<Props> = ({ eventItem }) => {
-  const user = useSelector((state: RootState) => state.auth.user)
-  const buttonConfig = getEventButtonConfig(eventItem, user!.id)
+const EventItemRow: FC<Props> = ({ eventItem }) => (
+  <Container>
+    <Title>{eventItem.title}</Title>
+    <Description>{eventItem.description}</Description>
+    <Owner>{`${eventItem.owner.firstName} ${eventItem.owner.lastName}`}</Owner>
+    <StartDate>
+      {new Date(eventItem.startsAt).toLocaleString('en-US')}
+    </StartDate>
+    <Capacity>{`${eventItem.attendees.length} of ${eventItem.capacity}`}</Capacity>
 
-  return (
-    <Container>
-      <Title>{eventItem.title}</Title>
-      <Description>{eventItem.description}</Description>
-      <Owner>{`${eventItem.owner.firstName} ${eventItem.owner.lastName}`}</Owner>
-      <StartDate>
-        {new Date(eventItem.startsAt).toLocaleString('en-US')}
-      </StartDate>
-      <Capacity>{`${eventItem.attendees.length} of ${eventItem.capacity}`}</Capacity>
-
-      <StyledButton size="small" color={buttonConfig.color}>
-        {buttonConfig.text}
-      </StyledButton>
-    </Container>
-  )
-}
+    <EventItemButton eventItem={eventItem} />
+  </Container>
+)
 
 const Container = styled.div`
   display: flex;
@@ -51,6 +41,10 @@ const Container = styled.div`
     :first-child {
       margin-left: 0;
     }
+  }
+
+  > button {
+    margin-left: auto;
   }
 `
 const Title = styled.p`
@@ -76,9 +70,6 @@ const StartDate = styled.p`
 const Capacity = styled.p`
   width: 9rem;
   color: ${COLOR.GREY_TEXT_LIGHT};
-`
-const StyledButton = styled(Button)`
-  margin-left: auto;
 `
 
 export default EventItemRow
