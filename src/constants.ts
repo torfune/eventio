@@ -1,7 +1,9 @@
 export const COLOR = {
-  GREY: '#323C46',
-  GREY_LIGHT: '#949EA8',
-  GREY_BACKGROUND: '#F9F9FB',
+  GREY_TEXT_DARK: '#323C46',
+  GREY_TEXT_LIGHT: '#949EA8',
+  GREY_BUTTON: '#D9DCE1',
+  GREY_BUTTON_HOVER: '#C4C9D1',
+  GREY_PAGE_BACKGROUND: '#F9F9FB',
   GREEN: '#22D486',
   GREEN_HOVER: '#20BD78',
   RED: '#FF4081',
@@ -9,3 +11,5 @@ export const COLOR = {
 }
 
 export const HEADER_HEIGHT = '10rem'
+
+export const CARD_SHADOW = '0px 2px 4px #0000001f'

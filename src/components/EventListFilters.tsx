@@ -82,7 +82,8 @@ const CategoryItem = styled.li<{ active: boolean }>`
   font-weight: 600;
   margin-right: 3rem;
   cursor: pointer;
-  color: ${props => (props.active ? COLOR.GREY : COLOR.GREY_LIGHT)};
+  color: ${props =>
+    props.active ? COLOR.GREY_TEXT_DARK : COLOR.GREY_TEXT_LIGHT};
 
   :last-child {
     margin-right: 0;

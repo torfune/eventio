@@ -40,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.6rem;
     font-family: 'Hind', sans-serif;
-    color: ${COLOR.GREY};
+    color: ${COLOR.GREY_TEXT_DARK};
   }
 
   button, ul {
@@ -54,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
 
   h2 {
     margin-bottom: 4rem;
-    color: ${COLOR.GREY_LIGHT};
+    color: ${COLOR.GREY_TEXT_LIGHT};
     font-weight: 500;
     font-size: 1.8rem;
   }

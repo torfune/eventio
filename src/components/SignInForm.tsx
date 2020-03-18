@@ -88,7 +88,12 @@ const SignInForm = () => {
           submitFailed={auth.failed}
         />
 
-        <SubmitButton type="submit" loading={auth.loading}>
+        <SubmitButton
+          size="big"
+          color="green"
+          type="submit"
+          loading={auth.loading}
+        >
           SIGN IN
         </SubmitButton>
       </form>

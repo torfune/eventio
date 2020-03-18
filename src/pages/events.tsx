@@ -16,7 +16,7 @@ export default () => {
 
   return (
     <>
-      <Header backgroundColor={COLOR.GREY_BACKGROUND} logoColor="dark" />
+      <Header backgroundColor={COLOR.GREY_PAGE_BACKGROUND} logoColor="dark" />
 
       <Container>
         <EventListFilters />
@@ -28,6 +28,6 @@ export default () => {
 
 const Container = styled.div`
   min-height: 100vh;
-  background: ${COLOR.GREY_BACKGROUND};
+  background: ${COLOR.GREY_PAGE_BACKGROUND};
   padding: calc(${HEADER_HEIGHT} + 5rem) 12rem 0;
 `

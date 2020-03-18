@@ -40,12 +40,12 @@ const Container = styled.div<{ redBorder?: boolean }>`
   }
 
   > input:focus {
-    border-color: ${COLOR.GREY};
+    border-color: ${COLOR.GREY_TEXT_DARK};
   }
 
   > input::placeholder {
     font-size: 1.2rem;
-    color: ${COLOR.GREY_LIGHT};
+    color: ${COLOR.GREY_TEXT_LIGHT};
   }
 
   > input:not(:placeholder-shown) + label {
@@ -60,7 +60,7 @@ const Container = styled.div<{ redBorder?: boolean }>`
     opacity: 0;
     transition: 150ms;
     font-size: 1.2rem;
-    color: ${COLOR.GREY_LIGHT};
+    color: ${COLOR.GREY_TEXT_LIGHT};
   }
 `
 const ValidationMessage = styled.p`

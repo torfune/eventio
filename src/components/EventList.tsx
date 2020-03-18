@@ -1,19 +1,22 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import EventItemRow from './EventItemRow'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/rootReducer'
 import EventItemCard from './EventItemCard'
+import EventListViewMode from '../types/EventListViewMode'
 
 const EventList = () => {
-  const events = useSelector((state: RootState) => state.events)
+  const { loading, filteredItems, viewMode } = useSelector(
+    (state: RootState) => state.events
+  )
 
   return (
-    <Container>
-      {events.loading ? (
+    <Container viewMode={viewMode}>
+      {loading ? (
         <img src="/icons/spinner-dark.svg" />
       ) : (
-        events.filteredItems.map(eventItem =>
-          events.viewMode === 'grid' ? (
+        filteredItems.map(eventItem =>
+          viewMode === 'grid' ? (
             <EventItemCard key={eventItem.id} eventItem={eventItem} />
           ) : (
             <EventItemRow key={eventItem.id} eventItem={eventItem} />
@@ -24,12 +27,19 @@ const EventList = () => {
   )
 }
 
-const Container = styled.div`
+const Container = styled.div<{ viewMode: EventListViewMode }>`
   > img {
     height: 6rem;
     display: block;
     margin: 10rem auto;
   }
+
+  ${props =>
+    props.viewMode === 'grid' &&
+    css`
+      display: flex;
+      flex-wrap: wrap;
+    `}
 `
 
 export default EventList

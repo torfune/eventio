@@ -8,7 +8,7 @@ const SignUpMessage = () => (
 )
 
 const Container = styled.p`
-  color: ${COLOR.GREY};
+  color: ${COLOR.GREY_TEXT_DARK};
   display: flex;
   align-items: center;
 

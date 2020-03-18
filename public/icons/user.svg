@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Fill 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="--" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01-1-1-Dashboard" transform="translate(-560.000000, -787.000000)" fill="#949EA8">
+            <g id="05" transform="translate(525.000000, 544.000000)">
+                <g id="Attendees" transform="translate(31.000000, 239.000000)">
+                    <g id="icon-user">
+                        <path d="M11.9999993,11.9999993 C14.2099991,11.9999993 15.999999,10.2099994 15.999999,7.99999952 C15.999999,5.78999961 14.2099991,3.99999976 11.9999993,3.99999976 C9.78999937,3.99999976 7.99999952,5.78999961 7.99999952,7.99999952 C7.99999952,10.2099994 9.78999937,11.9999993 11.9999993,11.9999993 Z M11.9999993,13.9999992 C9.32999936,13.9999992 3.99999976,15.3399992 3.99999976,17.9999989 L3.99999976,19.9999988 L19.9999988,19.9999988 L19.9999988,17.9999989 C19.9999988,15.3399992 14.6699991,13.9999992 11.9999993,13.9999992 Z" id="Fill-2"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
