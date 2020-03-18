@@ -43,6 +43,10 @@ const GlobalStyle = createGlobalStyle`
     color: ${COLOR.GREY};
   }
 
+  button, ul {
+    padding: 0;
+  }
+
   h1 {
     margin-bottom: 2rem;
     font-weight: 500;
@@ -53,10 +57,6 @@ const GlobalStyle = createGlobalStyle`
     color: ${COLOR.GREY_LIGHT};
     font-weight: 500;
     font-size: 1.8rem;
-  }
-
-  button {
-    padding: 0;
   }
 `
 

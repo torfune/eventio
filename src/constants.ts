@@ -1,6 +1,7 @@
 export const COLOR = {
   GREY: '#323C46',
   GREY_LIGHT: '#949EA8',
+  GREY_BACKGROUND: '#F9F9FB',
   GREEN: '#22D486',
   GREEN_HOVER: '#20BD78',
   RED: '#FF4081',

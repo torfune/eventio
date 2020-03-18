@@ -11,7 +11,7 @@ interface Props {
 
 const Button: FC<Props> = ({ children, className, type, loading }) => (
   <Container className={className} type={type}>
-    {loading ? <img src="/icons/spinner.svg" /> : children}
+    {loading ? <img src="/icons/spinner-light.svg" /> : children}
   </Container>
 )
 
