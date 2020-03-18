@@ -9,6 +9,7 @@ interface Props {
   children: ReactNode
   size: ButtonSize
   color: ButtonColor
+  onClick?: () => void
   className?: string
   loading?: boolean
   type?: 'button' | 'submit' | 'reset'
@@ -21,8 +22,15 @@ const Button: FC<Props> = ({
   loading,
   size,
   color,
+  onClick,
 }) => (
-  <Container className={className} type={type} color={color} size={size}>
+  <Container
+    className={className}
+    type={type}
+    color={color}
+    size={size}
+    onClick={onClick}
+  >
     {loading ? <img src="/icons/spinner-light.svg" /> : children}
   </Container>
 )

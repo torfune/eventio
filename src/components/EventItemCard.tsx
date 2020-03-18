@@ -13,10 +13,7 @@ interface Props {
 
 const EventItemCard: FC<Props> = ({ eventItem }) => {
   const user = useSelector((state: RootState) => state.auth.user)
-  const buttonConfig = getEventButtonConfig(
-    eventItem,
-    user ? user.id : '5e6f7eabb6a291001f89b12f'
-  ) // TODO: remove placeholder
+  const buttonConfig = getEventButtonConfig(eventItem, user!.id)
 
   return (
     <Container>
@@ -29,7 +26,7 @@ const EventItemCard: FC<Props> = ({ eventItem }) => {
 
       <BottomRow>
         <Capacity>
-          <img src="/icons/user.svg" />{' '}
+          <img src="/icons/user.svg" />
           <p>{`${eventItem.attendees.length} of ${eventItem.capacity}`}</p>
         </Capacity>
         <Button size="small" color={buttonConfig.color}>

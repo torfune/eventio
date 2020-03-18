@@ -12,10 +12,12 @@ const initialState: {
   loading: boolean
   failed: boolean
   user: User | null
+  accessToken: string | null
 } = {
   loading: false,
   failed: false,
   user: null,
+  accessToken: null,
 }
 
 export default createReducer(initialState, builder =>
@@ -30,7 +32,8 @@ export default createReducer(initialState, builder =>
     .addCase(signInSuccess, (state, action) => ({
       ...state,
       loading: false,
-      user: action.payload,
+      user: action.payload.user,
+      accessToken: action.payload.accessToken,
     }))
 
     // Sign in - Failure
@@ -45,6 +48,7 @@ export default createReducer(initialState, builder =>
       ...state,
       loading: false,
       user: null,
+      accessToken: null,
     }))
 
     // Clear failed status
