@@ -3,34 +3,19 @@ import { COLOR, HEADER_HEIGHT } from '../constants'
 import styled from 'styled-components'
 import EventListFilters from '../components/EventListFilters'
 import EventList from '../components/EventList'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchAllEventItems } from '../store/events/actions'
 import Button from '../components/Button'
-import { signOut, signInRefresh } from '../store/auth/actions'
-import { RootState } from '../store/rootReducer'
+import { signOut } from '../store/auth/actions'
+import Authorize from '../components/Authorize'
 
-export default () => {
+const EventsPage = () => {
   const dispatch = useDispatch()
-  const user = useSelector((state: RootState) => state.auth.user)
 
   useEffect(() => {
-    if (user) return
-
-    const refreshToken = localStorage.getItem('refreshToken')
-    if (!refreshToken) {
-      dispatch(signOut())
-      return
-    }
-
-    dispatch(signInRefresh(refreshToken))
+    dispatch(fetchAllEventItems())
   }, [])
-
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchAllEventItems())
-    }
-  }, [user])
 
   return (
     <>
@@ -57,3 +42,9 @@ const Container = styled.div`
   background: ${COLOR.GREY_PAGE_BACKGROUND};
   padding: calc(${HEADER_HEIGHT} + 5rem) 12rem 0;
 `
+
+export default () => (
+  <Authorize>
+    <EventsPage />
+  </Authorize>
+)
