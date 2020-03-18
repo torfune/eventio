@@ -6,11 +6,12 @@ interface Props {
   children: ReactNode
   className?: string
   type?: 'button' | 'submit' | 'reset'
+  loading?: boolean
 }
 
-const Button: FC<Props> = ({ children, className, type }) => (
+const Button: FC<Props> = ({ children, className, type, loading }) => (
   <Container className={className} type={type}>
-    {children}
+    {loading ? <img src="/icons/spinner.svg" /> : children}
   </Container>
 )
 
@@ -28,6 +29,10 @@ const Container = styled.button`
   font-size: 1.4rem;
   letter-spacing: 0.2rem;
   transition: background-color 150ms;
+
+  > img {
+    height: 2.5rem;
+  }
 
   :hover {
     background: ${COLOR.GREEN_HOVER};

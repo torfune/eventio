@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import SignUpMessage from '../components/SignUpMessage'
+import SignUpMessage from '../components/Header/SignUpMessage'
 import styled from 'styled-components'
 import HomeImage from '../components/HomeImage'
 import SignInForm from '../components/SignInForm'
@@ -8,7 +8,7 @@ export default () => (
   <>
     <Header
       backgroundColor="transparent"
-      logoColor="#fff"
+      logoColor="light"
       rightComponent={<SignUpMessage />}
     />
 

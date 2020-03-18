@@ -2,11 +2,14 @@ import styled from 'styled-components'
 import Input from './Input'
 import Button from './Button'
 import { useFormik } from 'formik'
-import { useState } from 'react'
 import { COLOR } from '../constants'
+import { RootState } from '../store/rootReducer'
+import { useSelector, useDispatch } from 'react-redux'
+import { signOut, signIn, clearFailure } from '../store/auth/actions'
 
 const SignInForm = () => {
-  const [submitFailed, setSubmitFailed] = useState(false)
+  const dispatch = useDispatch()
+  const auth = useSelector((state: RootState) => state.auth)
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -26,12 +29,18 @@ const SignInForm = () => {
       return errors
     },
     onSubmit: values => {
-      setSubmitFailed(true)
+      if (auth.user) {
+        dispatch(signOut())
+      } else {
+        dispatch(signIn(values.email, values.password))
+      }
     },
   })
 
   const handleFocus = () => {
-    setSubmitFailed(false)
+    if (auth.failed) {
+      dispatch(clearFailure())
+    }
   }
 
   const {
@@ -47,7 +56,7 @@ const SignInForm = () => {
     <Container>
       <h1>Sign in to Eventio.</h1>
 
-      {submitFailed ? (
+      {auth.failed ? (
         <h2 style={{ color: COLOR.RED }}>
           Oops! That email and password combination is not valid.
         </h2>
@@ -65,7 +74,7 @@ const SignInForm = () => {
           label="Email"
           type="email"
           validationMessage={touched.email ? errors.email : undefined}
-          submitFailed={submitFailed}
+          submitFailed={auth.failed}
         />
         <Input
           name="password"
@@ -76,10 +85,12 @@ const SignInForm = () => {
           label="Password"
           type="password"
           validationMessage={touched.password ? errors.password : undefined}
-          submitFailed={submitFailed}
+          submitFailed={auth.failed}
         />
 
-        <SubmitButton type="submit">SIGN IN</SubmitButton>
+        <SubmitButton type="submit" loading={auth.loading}>
+          SIGN IN
+        </SubmitButton>
       </form>
     </Container>
   )

@@ -4,25 +4,25 @@ import { COLOR } from './constants'
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Hind';
-    src: url('/fonts/Hind-Regular.ttf') format('truetype');
+    src: url('/fonts/Hind/Hind-Regular.ttf') format('truetype');
     font-weight: 400;
   }
 
   @font-face {
     font-family: 'Hind';
-    src: url('/fonts/Hind-Medium.ttf') format('truetype');
+    src: url('/fonts/Hind/Hind-Medium.ttf') format('truetype');
     font-weight: 500;
   }
 
   @font-face {
     font-family: 'Hind';
-    src: url('/fonts/Hind-SemiBold.ttf') format('truetype');
+    src: url('/fonts/Hind/Hind-SemiBold.ttf') format('truetype');
     font-weight: 600;
   }
 
   @font-face {
     font-family: 'Playfair Display';
-    src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+    src: url('/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf') format('truetype');
     font-weight: 400;
   }
 
