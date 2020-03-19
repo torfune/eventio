@@ -3,6 +3,7 @@ import { AppThunk } from '..'
 import Api from '../../api'
 import User from '../../api/types/User'
 import Router from 'next/router'
+import StorageService from '../../StorageService'
 
 // Action creators
 export const signInStart = createAction('auth/signInStart')
@@ -14,7 +15,7 @@ export const signInSuccess = createAction(
 )
 export const signInFailure = createAction('auth/signInFailure')
 export const signOut = createAction('auth/signOut', () => {
-  localStorage.removeItem('refreshToken')
+  StorageService.clearRefreshToken()
   Router.push('/')
   return { payload: null }
 })
@@ -32,7 +33,7 @@ export const signIn = (
       email,
       password
     )
-    localStorage.setItem('refreshToken', refreshToken)
+    StorageService.setRefreshToken(refreshToken)
     Router.push('/events')
     dispatch(signInSuccess(user, accessToken))
   } catch {

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/rootReducer'
 import { signOut, signInRefresh } from '../store/auth/actions'
 import styled from 'styled-components'
+import StorageService from '../StorageService'
 
 interface Props {
   children: ReactNode
@@ -15,7 +16,7 @@ const Authorize: FC<Props> = ({ children }) => {
   useEffect(() => {
     if (user) return
 
-    const refreshToken = localStorage.getItem('refreshToken')
+    const refreshToken = StorageService.getRefreshToken()
     if (!refreshToken) {
       dispatch(signOut())
       return

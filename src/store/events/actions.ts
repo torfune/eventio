@@ -5,19 +5,26 @@ import EventItem from '../../api/types/EventItem'
 import EventItemCategory from '../../types/EventItemCategory'
 import EventListViewMode from '../../types/EventListViewMode'
 import CreateEventData from '../../types/CreateEventData'
+import StorageService from '../../StorageService'
 
 // Action creators
 export const selectCategory = createAction(
   'events/selectCategory',
-  (category: EventItemCategory) => ({
-    payload: category,
-  })
+  (category: EventItemCategory) => {
+    StorageService.setCategory(category)
+    return {
+      payload: category,
+    }
+  }
 )
 export const selectViewMode = createAction(
   'events/selectViewMode',
-  (viewMode: EventListViewMode) => ({
-    payload: viewMode,
-  })
+  (viewMode: EventListViewMode) => {
+    StorageService.setViewMode(viewMode)
+    return {
+      payload: viewMode,
+    }
+  }
 )
 export const fetchAllStart = createAction('events/fetchAllStart')
 export const fetchAllSuccess = createAction(
