@@ -1,31 +1,39 @@
 import styled from 'styled-components'
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import { HEADER_HEIGHT } from '../../constants'
+import CenterSection from './CenterSection'
+import RightSection from './RightSection'
+
+export type CenterSectionName = 'goBack'
+export type RightSectionName = 'signUp' | 'signOut' | 'close'
 
 interface Props {
   backgroundColor: string
   logoColor: 'light' | 'dark'
-  centerComponent?: ReactNode
-  rightComponent?: ReactNode
+  centerSection?: CenterSectionName
+  rightSection?: RightSectionName
 }
 
 const Header: FC<Props> = ({
   backgroundColor,
   logoColor,
-  centerComponent,
-  rightComponent,
+  centerSection,
+  rightSection,
 }) => (
   <Container background={backgroundColor}>
-    <img src={`/icons/logo-${logoColor}.svg`} />
-    {centerComponent || <div />}
-    {rightComponent || <div />}
+    <div>
+      <img src={`/icons/logo-${logoColor}.svg`} />
+    </div>
+
+    <CenterSection sectionName={centerSection} />
+    <RightSection sectionName={rightSection} />
   </Container>
 )
 
 const Container = styled.div<{ background: string }>`
   background: ${props => props.background};
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 0 6rem;
   position: fixed;
@@ -33,8 +41,12 @@ const Container = styled.div<{ background: string }>`
   height: ${HEADER_HEIGHT};
   z-index: 1;
 
-  > img:first-child {
-    height: 3rem;
+  > div:first-child {
+    text-align: left;
+
+    > img {
+      height: 3rem;
+    }
   }
 `
 

@@ -2,7 +2,6 @@ import Header from '../components/Header'
 import { COLOR } from '../constants'
 import styled from 'styled-components'
 import Authorize from '../components/Authorize'
-import Link from 'next/link'
 import CreateEventForm from '../components/CreateEventForm'
 
 const CreateEventPage = () => (
@@ -10,11 +9,7 @@ const CreateEventPage = () => (
     <Header
       backgroundColor={COLOR.GREY_PAGE_BACKGROUND}
       logoColor="dark"
-      rightComponent={
-        <Link href="/events">
-          <a>Close</a>
-        </Link>
-      }
+      rightSection="close"
     />
 
     <Container>

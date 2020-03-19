@@ -50,7 +50,7 @@ export const addEvent = createAction(
 export const fetchAllEventItems = (): AppThunk => async dispatch => {
   dispatch(fetchAllStart())
   try {
-    const eventItems = await Api.getAllEventItems()
+    const eventItems = await Api.events.getAll()
     dispatch(fetchAllSuccess(eventItems))
   } catch (error) {
     console.error(error)
@@ -65,7 +65,7 @@ export const createEvent = (data: CreateEventData): AppThunk => async (
   if (!accessToken) return
 
   try {
-    const eventItem = await Api.createEvent(data, accessToken)
+    const eventItem = await Api.events.create(data, accessToken)
     dispatch(addEvent(eventItem))
   } catch (error) {
     console.error(error)
@@ -80,7 +80,7 @@ export const joinEvent = (eventId: string): AppThunk => async (
   if (!accessToken) return
 
   try {
-    const eventItem = await Api.joinEvent(eventId, accessToken)
+    const eventItem = await Api.events.join(eventId, accessToken)
     dispatch(updateEvent(eventItem))
   } catch (error) {
     console.error(error)
@@ -95,7 +95,7 @@ export const leaveEvent = (eventId: string): AppThunk => async (
   if (!accessToken) return
 
   try {
-    const eventItem = await Api.leaveEvent(eventId, accessToken)
+    const eventItem = await Api.events.leave(eventId, accessToken)
     dispatch(updateEvent(eventItem))
   } catch (error) {
     console.error(error)

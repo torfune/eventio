@@ -47,6 +47,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  a {
+    color: ${COLOR.GREY_TEXT_DARK};
+    text-decoration: none;
+  }
+
   h1, h2 {
     font-weight: 500;
     margin: 0;

@@ -30,11 +30,7 @@ const EventsPage = () => {
       <Header
         backgroundColor={COLOR.GREY_PAGE_BACKGROUND}
         logoColor="dark"
-        rightComponent={
-          <Button size="small" color="grey" onClick={() => dispatch(signOut())}>
-            LOGOUT
-          </Button>
-        }
+        rightSection="signOut"
       />
 
       <Container>
@@ -46,7 +42,7 @@ const EventsPage = () => {
         <Link href="/create-event">
           <a>
             <CreateEventButton
-              iconSrc="/icons/logo-light.svg"
+              iconSrc="/icons/plus.svg"
               backgroundColor={COLOR.GREY_TEXT_DARK}
             />
           </a>

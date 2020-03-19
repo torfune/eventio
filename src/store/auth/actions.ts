@@ -29,7 +29,7 @@ export const signIn = (
   dispatch(clearFailure())
   dispatch(signInStart())
   try {
-    const { user, accessToken, refreshToken } = await Api.signIn(
+    const { user, accessToken, refreshToken } = await Api.auth.signIn(
       email,
       password
     )
@@ -46,7 +46,7 @@ export const signInRefresh = (
 ): AppThunk => async dispatch => {
   dispatch(signInStart())
   try {
-    const { user, accessToken } = await Api.signInRefresh(refreshToken)
+    const { user, accessToken } = await Api.auth.signInRefresh(refreshToken)
     dispatch(signInSuccess(user, accessToken))
   } catch {
     dispatch(signOut())

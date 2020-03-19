@@ -1,5 +1,4 @@
 import Header from '../components/Header'
-import SignUpMessage from '../components/Header/SignUpMessage'
 import styled from 'styled-components'
 import CoverImage from '../components/CoverImage'
 import SignInForm from '../components/SignInForm'
@@ -9,7 +8,7 @@ export default () => (
     <Header
       backgroundColor="transparent"
       logoColor="light"
-      rightComponent={<SignUpMessage />}
+      rightSection="signUp"
     />
 
     <Container>
