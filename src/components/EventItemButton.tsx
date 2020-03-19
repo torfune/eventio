@@ -1,6 +1,6 @@
 import Button from './Button'
 import { FC, useState } from 'react'
-import getEventButtonConfig from '../utils/getEventButtonColor'
+import getEventButtonConfig from '../utils/getEventButtonConfig'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/rootReducer'
 import { leaveEvent, joinEvent } from '../store/events/actions'
