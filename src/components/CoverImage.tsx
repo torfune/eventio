@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { COLOR } from '../constants'
 
-const HomeImage = () => (
+const CoverImage = () => (
   <Container>
     <img src="/images/home.png" />
 
@@ -18,8 +18,9 @@ const HomeImage = () => (
 
 const Container = styled.div`
   color: #fff;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
+  overflow: hidden;
 
   > img {
     height: 100vh;
@@ -53,4 +54,4 @@ const TextSection = styled.div`
   }
 `
 
-export default HomeImage
+export default CoverImage

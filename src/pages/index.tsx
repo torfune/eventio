@@ -1,7 +1,7 @@
 import Header from '../components/Header'
 import SignUpMessage from '../components/Header/SignUpMessage'
 import styled from 'styled-components'
-import HomeImage from '../components/HomeImage'
+import CoverImage from '../components/CoverImage'
 import SignInForm from '../components/SignInForm'
 
 export default () => (
@@ -13,7 +13,7 @@ export default () => (
     />
 
     <Container>
-      <HomeImage />
+      <CoverImage />
       <ContentWrapper>
         <SignInForm />
       </ContentWrapper>
@@ -23,7 +23,7 @@ export default () => (
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 50rem 1fr;
   height: 100vh;
   overflow: hidden;
 `
