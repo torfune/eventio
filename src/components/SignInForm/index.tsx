@@ -22,11 +22,7 @@ const SignInForm = () => {
     initialValues,
     validate,
     onSubmit: values => {
-      if (auth.user) {
-        dispatch(signOut())
-      } else {
-        dispatch(signIn(values.email, values.password))
-      }
+      dispatch(signIn(values.email, values.password))
     },
   })
 

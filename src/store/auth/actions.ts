@@ -16,7 +16,6 @@ export const signInSuccess = createAction(
 export const signInFailure = createAction('auth/signInFailure')
 export const signOut = createAction('auth/signOut', () => {
   StorageService.clearRefreshToken()
-  Router.push('/')
   return { payload: null }
 })
 export const clearFailure = createAction('auth/clearFailure')
@@ -45,10 +44,6 @@ export const signInRefresh = (
   refreshToken: string
 ): AppThunk => async dispatch => {
   dispatch(signInStart())
-  try {
-    const { user, accessToken } = await Api.auth.signInRefresh(refreshToken)
-    dispatch(signInSuccess(user, accessToken))
-  } catch {
-    dispatch(signOut())
-  }
+  const { user, accessToken } = await Api.auth.signInRefresh(refreshToken)
+  dispatch(signInSuccess(user, accessToken))
 }

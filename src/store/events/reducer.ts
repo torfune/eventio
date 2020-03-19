@@ -9,7 +9,7 @@ import {
 } from './actions'
 import EventItem from '../../api/types/EventItem'
 
-const initialState: {
+export const initialState: {
   items: EventItem[]
   itemsLoading: boolean
   itemsFetched: boolean

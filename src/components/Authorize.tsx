@@ -4,6 +4,7 @@ import { RootState } from '../store/rootReducer'
 import { signOut, signInRefresh } from '../store/auth/actions'
 import styled from 'styled-components'
 import StorageService from '../StorageService'
+import Router from 'next/router'
 
 interface Props {
   children: ReactNode
@@ -19,10 +20,15 @@ const Authorize: FC<Props> = ({ children }) => {
     const refreshToken = StorageService.getRefreshToken()
     if (!refreshToken) {
       dispatch(signOut())
+      Router.push('/')
       return
     }
 
-    dispatch(signInRefresh(refreshToken))
+    try {
+      dispatch(signInRefresh(refreshToken))
+    } catch {
+      Router.push('/')
+    }
   }, [])
 
   if (user) {

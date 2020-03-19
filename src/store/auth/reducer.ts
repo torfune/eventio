@@ -8,7 +8,7 @@ import {
 } from './actions'
 import User from '../../api/types/User'
 
-const initialState: {
+export const initialState: {
   loading: boolean
   failed: boolean
   user: User | null
