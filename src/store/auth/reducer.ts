@@ -20,40 +20,57 @@ const initialState: {
   accessToken: null,
 }
 
+type State = typeof initialState
+
 export default createReducer(initialState, builder =>
   builder
     // Sign in - Start
-    .addCase(signInStart, state => ({
-      ...state,
-      loading: true,
-    }))
+    .addCase(
+      signInStart,
+      (state): State => ({
+        ...state,
+        loading: true,
+      })
+    )
 
     // Sign in - Success
-    .addCase(signInSuccess, (state, action) => ({
-      ...state,
-      loading: false,
-      user: action.payload.user,
-      accessToken: action.payload.accessToken,
-    }))
+    .addCase(
+      signInSuccess,
+      (state, action): State => ({
+        ...state,
+        loading: false,
+        user: action.payload.user,
+        accessToken: action.payload.accessToken,
+      })
+    )
 
     // Sign in - Failure
-    .addCase(signInFailure, state => ({
-      ...state,
-      loading: false,
-      failed: true,
-    }))
+    .addCase(
+      signInFailure,
+      (state): State => ({
+        ...state,
+        loading: false,
+        failed: true,
+      })
+    )
 
     // Sign out
-    .addCase(signOut, state => ({
-      ...state,
-      loading: false,
-      user: null,
-      accessToken: null,
-    }))
+    .addCase(
+      signOut,
+      (state): State => ({
+        ...state,
+        loading: false,
+        user: null,
+        accessToken: null,
+      })
+    )
 
     // Clear failed status
-    .addCase(clearFailure, state => ({
-      ...state,
-      failed: false,
-    }))
+    .addCase(
+      clearFailure,
+      (state): State => ({
+        ...state,
+        failed: false,
+      })
+    )
 )

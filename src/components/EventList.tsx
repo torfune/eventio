@@ -4,18 +4,19 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store/rootReducer'
 import EventItemCard from './EventItemCard'
 import EventListViewMode from '../types/EventListViewMode'
+import filterEventsByCategory from '../utils/filterEventsByCategory'
 
 const EventList = () => {
-  const { loading, filteredItems, viewMode } = useSelector(
+  const { itemsLoading, items, category, viewMode } = useSelector(
     (state: RootState) => state.events
   )
 
   return (
     <Container viewMode={viewMode}>
-      {loading ? (
+      {itemsLoading ? (
         <img src="/icons/spinner-dark.svg" />
       ) : (
-        filteredItems.map(eventItem =>
+        filterEventsByCategory(items, category).map(eventItem =>
           viewMode === 'grid' ? (
             <EventItemCard key={eventItem.id} eventItem={eventItem} />
           ) : (
@@ -39,6 +40,7 @@ const Container = styled.div<{ viewMode: EventListViewMode }>`
     css`
       display: flex;
       flex-wrap: wrap;
+      margin-right: -2rem;
     `}
 `
 

@@ -1,33 +1,26 @@
 import styled from 'styled-components'
-import Input from './Input'
-import Button from './Button'
+import Input from '../Input'
+import Button from '../Button'
 import { useFormik } from 'formik'
-import { COLOR } from '../constants'
-import { RootState } from '../store/rootReducer'
+import { COLOR } from '../../constants'
+import { RootState } from '../../store/rootReducer'
 import { useSelector, useDispatch } from 'react-redux'
-import { signOut, signIn, clearFailure } from '../store/auth/actions'
+import { signOut, signIn, clearFailure } from '../../store/auth/actions'
+import validate from './validate'
+
+export type FormValues = typeof initialValues
+
+const initialValues = {
+  email: '',
+  password: '',
+}
 
 const SignInForm = () => {
   const dispatch = useDispatch()
   const auth = useSelector((state: RootState) => state.auth)
   const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validate: values => {
-      const errors: { [key: string]: string } = {}
-
-      if (!values.email) {
-        errors.email = 'Email is required'
-      }
-
-      if (!values.password) {
-        errors.password = 'Password is required'
-      }
-
-      return errors
-    },
+    initialValues,
+    validate,
     onSubmit: values => {
       if (auth.user) {
         dispatch(signOut())
@@ -92,7 +85,7 @@ const SignInForm = () => {
           size="big"
           color="green"
           type="submit"
-          loading={auth.loading}
+          loading={auth.loading || !!auth.user}
         >
           SIGN IN
         </SubmitButton>
@@ -103,6 +96,10 @@ const SignInForm = () => {
 
 const Container = styled.div`
   width: 50rem;
+
+  > form {
+    margin-top: 4rem;
+  }
 `
 const SubmitButton = styled(Button)`
   margin-top: 5rem;

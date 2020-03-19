@@ -20,6 +20,8 @@ const EventItemButton: FC<Props> = ({ eventItem }) => {
   const { text, color, action } = getEventButtonConfig(eventItem, user.id)
 
   const handleButtonClick = async () => {
+    if (loading) return
+
     setLoading(true)
 
     switch (action) {

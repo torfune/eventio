@@ -1,7 +1,10 @@
 import EventItem from '../api/types/EventItem'
 import EventItemCategory from '../types/EventItemCategory'
 
-const filterEventItems = (events: EventItem[], category: EventItemCategory) => {
+const filterEventsByCategory = (
+  events: EventItem[],
+  category: EventItemCategory
+) => {
   if (category === 'all') return events
 
   const currentDate = new Date()
@@ -14,4 +17,4 @@ const filterEventItems = (events: EventItem[], category: EventItemCategory) => {
   })
 }
 
-export default filterEventItems
+export default filterEventsByCategory

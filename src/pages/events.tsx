@@ -3,18 +3,26 @@ import { COLOR, HEADER_HEIGHT } from '../constants'
 import styled from 'styled-components'
 import EventListFilters from '../components/EventListFilters'
 import EventList from '../components/EventList'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchAllEventItems } from '../store/events/actions'
 import Button from '../components/Button'
 import { signOut } from '../store/auth/actions'
 import Authorize from '../components/Authorize'
+import CircleButton from '../components/CircleButton'
+import Link from 'next/link'
+import { RootState } from '../store/rootReducer'
 
 const EventsPage = () => {
   const dispatch = useDispatch()
+  const eventsFetched = useSelector(
+    (state: RootState) => state.events.itemsFetched
+  )
 
   useEffect(() => {
-    dispatch(fetchAllEventItems())
+    if (!eventsFetched) {
+      dispatch(fetchAllEventItems())
+    }
   }, [])
 
   return (
@@ -30,8 +38,19 @@ const EventsPage = () => {
       />
 
       <Container>
-        <EventListFilters />
-        <EventList />
+        <ContentWrapper>
+          <EventListFilters />
+          <EventList />
+        </ContentWrapper>
+
+        <Link href="/create-event">
+          <a>
+            <CreateEventButton
+              iconSrc="/icons/logo-light.svg"
+              backgroundColor={COLOR.GREY_TEXT_DARK}
+            />
+          </a>
+        </Link>
       </Container>
     </>
   )
@@ -40,7 +59,16 @@ const EventsPage = () => {
 const Container = styled.div`
   min-height: 100vh;
   background: ${COLOR.GREY_PAGE_BACKGROUND};
-  padding: calc(${HEADER_HEIGHT} + 5rem) 12rem 0;
+  padding: calc(${HEADER_HEIGHT} + 5rem) 8rem 0;
+`
+const ContentWrapper = styled.div`
+  max-width: 139rem;
+  margin: 0 auto;
+`
+const CreateEventButton = styled(CircleButton)`
+  position: fixed;
+  bottom: 6rem;
+  right: 6rem;
 `
 
 export default () => (

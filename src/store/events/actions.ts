@@ -4,6 +4,7 @@ import Api from '../../api'
 import EventItem from '../../api/types/EventItem'
 import EventItemCategory from '../../types/EventItemCategory'
 import EventListViewMode from '../../types/EventListViewMode'
+import CreateEventData from '../../types/CreateEventData'
 
 // Action creators
 export const selectCategory = createAction(
@@ -18,9 +19,9 @@ export const selectViewMode = createAction(
     payload: viewMode,
   })
 )
-export const fetchStart = createAction('events/fetchStart')
-export const fetchSuccess = createAction(
-  'events/fetchSuccess',
+export const fetchAllStart = createAction('events/fetchAllStart')
+export const fetchAllSuccess = createAction(
+  'events/fetchAllSuccess',
   (eventItems: EventItem[]) => ({
     payload: eventItems,
   })
@@ -31,19 +32,25 @@ export const updateEvent = createAction(
     payload: eventItem,
   })
 )
+export const addEvent = createAction(
+  'events/addEvent',
+  (eventItem: EventItem) => ({
+    payload: eventItem,
+  })
+)
 
 // Thunks
 export const fetchAllEventItems = (): AppThunk => async dispatch => {
-  dispatch(fetchStart())
+  dispatch(fetchAllStart())
   try {
     const eventItems = await Api.getAllEventItems()
-    dispatch(fetchSuccess(eventItems))
+    dispatch(fetchAllSuccess(eventItems))
   } catch (error) {
     console.error(error)
   }
 }
 
-export const leaveEvent = (eventId: string): AppThunk => async (
+export const createEvent = (data: CreateEventData): AppThunk => async (
   dispatch,
   getState
 ) => {
@@ -51,8 +58,8 @@ export const leaveEvent = (eventId: string): AppThunk => async (
   if (!accessToken) return
 
   try {
-    const eventItem = await Api.leaveEvent(eventId, accessToken)
-    dispatch(updateEvent(eventItem))
+    const eventItem = await Api.createEvent(data, accessToken)
+    dispatch(addEvent(eventItem))
   } catch (error) {
     console.error(error)
   }
@@ -67,6 +74,21 @@ export const joinEvent = (eventId: string): AppThunk => async (
 
   try {
     const eventItem = await Api.joinEvent(eventId, accessToken)
+    dispatch(updateEvent(eventItem))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const leaveEvent = (eventId: string): AppThunk => async (
+  dispatch,
+  getState
+) => {
+  const accessToken = getState().auth.accessToken
+  if (!accessToken) return
+
+  try {
+    const eventItem = await Api.leaveEvent(eventId, accessToken)
     dispatch(updateEvent(eventItem))
   } catch (error) {
     console.error(error)

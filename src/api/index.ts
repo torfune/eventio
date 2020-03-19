@@ -2,6 +2,7 @@ import Axios from 'axios'
 import { API_URL, API_KEY } from '../config'
 import User from './types/User'
 import EventItem from './types/EventItem'
+import CreateEventData from '../types/CreateEventData'
 
 class Api {
   static async signIn(email: string, password: string) {
@@ -35,18 +36,23 @@ class Api {
     }
   }
 
-  static async getAllEventItems(): Promise<EventItem[]> {
-    const { data: eventItems } = await Axios.get(`${API_URL}/events`, {
+  static async getAllEventItems() {
+    const response = await Axios.get(`${API_URL}/events`, {
       headers: { APIKey: API_KEY },
     })
 
-    return eventItems
+    return response.data as EventItem[]
   }
 
-  static async joinEvent(
-    eventId: string,
-    accessToken: string
-  ): Promise<EventItem> {
+  static async createEvent(data: CreateEventData, accessToken: string) {
+    const response = await Axios.post(`${API_URL}/events`, data, {
+      headers: { APIKey: API_KEY, Authorization: accessToken },
+    })
+
+    return response.data as EventItem
+  }
+
+  static async joinEvent(eventId: string, accessToken: string) {
     const response = await Axios.post(
       `${API_URL}/events/${eventId}/attendees/me`,
       {},
@@ -55,13 +61,10 @@ class Api {
       }
     )
 
-    return response.data
+    return response.data as EventItem
   }
 
-  static async leaveEvent(
-    eventId: string,
-    accessToken: string
-  ): Promise<EventItem> {
+  static async leaveEvent(eventId: string, accessToken: string) {
     const response = await Axios.delete(
       `${API_URL}/events/${eventId}/attendees/me`,
       {
@@ -69,7 +72,7 @@ class Api {
       }
     )
 
-    return response.data
+    return response.data as EventItem
   }
 }
 

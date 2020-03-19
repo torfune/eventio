@@ -47,15 +47,13 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-  h1 {
-    margin-bottom: 2rem;
+  h1, h2 {
     font-weight: 500;
+    margin: 0;
   }
 
   h2 {
-    margin-bottom: 4rem;
     color: ${COLOR.GREY_TEXT_LIGHT};
-    font-weight: 500;
     font-size: 1.8rem;
   }
 `

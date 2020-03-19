@@ -27,16 +27,25 @@ const Authorize: FC<Props> = ({ children }) => {
   if (user) {
     return <>{children}</>
   } else {
-    return <Spinner />
+    return (
+      <Container>
+        <img src="/icons/spinner-dark.svg" />
+      </Container>
+    )
   }
 }
 
-const Spinner = styled.img.attrs({
-  src: '/icons/spinner-dark.svg',
-})`
-  display: block;
-  height: 6rem;
-  margin: 10rem auto;
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  > img {
+    position: relative;
+    top: -12rem;
+    height: 6rem;
+  }
 `
 
 export default Authorize

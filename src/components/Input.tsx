@@ -16,17 +16,23 @@ const Input: FC<Props> = ({
   ...inputProps
 }) => (
   <Container redBorder={submitFailed || !!validationMessage}>
-    <input id={name} name={name} placeholder={label} {...inputProps} />
+    <ValidationMessage>{validationMessage}</ValidationMessage>
+
+    <input
+      id={name}
+      name={name}
+      placeholder={label}
+      {...inputProps}
+      type={inputProps.type || 'text'}
+    />
     <label htmlFor={name} data-content={label}>
       <span>{label}</span>
     </label>
-
-    <ValidationMessage>{validationMessage}</ValidationMessage>
   </Container>
 )
 
 const Container = styled.div<{ redBorder?: boolean }>`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   position: relative;
 
   > input {
@@ -37,6 +43,7 @@ const Container = styled.div<{ redBorder?: boolean }>`
     padding-top: 2rem;
     padding-bottom: 1rem;
     border-color: ${props => props.redBorder && COLOR.RED};
+    font-size: 1.6rem;
   }
 
   > input:focus {
@@ -44,7 +51,7 @@ const Container = styled.div<{ redBorder?: boolean }>`
   }
 
   > input::placeholder {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: ${COLOR.GREY_TEXT_LIGHT};
   }
 
@@ -59,14 +66,17 @@ const Container = styled.div<{ redBorder?: boolean }>`
     bottom: 1rem;
     opacity: 0;
     transition: 150ms;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: ${COLOR.GREY_TEXT_LIGHT};
   }
 `
 const ValidationMessage = styled.p`
+  position: absolute;
+  right: 0;
+  top: 0;
   color: ${COLOR.RED};
-  margin-top: 0.8rem;
-  font-size: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
 `
 
 export default Input

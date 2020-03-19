@@ -1,66 +1,87 @@
 import { createReducer } from '@reduxjs/toolkit'
 import {
-  fetchSuccess,
-  fetchStart,
+  fetchAllSuccess,
+  fetchAllStart,
   selectCategory,
   selectViewMode,
   updateEvent,
+  addEvent,
 } from './actions'
 import EventItem from '../../api/types/EventItem'
-import filterEventItems from '../../utils/filterPastEvents'
 
 const initialState: {
-  loading: boolean
   items: EventItem[]
-  filteredItems: EventItem[]
+  itemsLoading: boolean
+  itemsFetched: boolean
   viewMode: 'grid' | 'list'
   category: 'all' | 'future' | 'past'
 } = {
-  loading: false,
   items: [],
-  filteredItems: [],
+  itemsLoading: false,
+  itemsFetched: false,
   viewMode: 'grid',
   category: 'all',
 }
 
+type State = typeof initialState
+
 export default createReducer(initialState, builder =>
   builder
-    // Fetch all - Start
-    .addCase(fetchStart, state => ({
-      ...state,
-      loading: true,
-    }))
-
-    // Fetch all - Success
-    .addCase(fetchSuccess, (state, action) => ({
-      ...state,
-      loading: false,
-      items: action.payload,
-      filteredItems: filterEventItems(action.payload, state.category),
-    }))
-
-    // Update one
-    .addCase(updateEvent, (state, action) => {
-      const newItems = state.items.map(event =>
-        event.id === action.payload.id ? action.payload : event
-      )
-      return {
+    // Fetch all Events - Start
+    .addCase(
+      fetchAllStart,
+      (state): State => ({
         ...state,
-        items: newItems,
-        filteredItems: filterEventItems(newItems, state.category),
-      }
-    })
+        itemsLoading: true,
+      })
+    )
 
-    // Category - Select
-    .addCase(selectCategory, (state, action) => ({
-      ...state,
-      category: action.payload,
-      filteredItems: filterEventItems(state.items, action.payload),
-    }))
+    // Fetch all Events - Success
+    .addCase(
+      fetchAllSuccess,
+      (state, action): State => ({
+        ...state,
+        items: action.payload,
+        itemsLoading: false,
+        itemsFetched: true,
+      })
+    )
 
-    // View mode - Select
-    .addCase(selectViewMode, (state, action) => ({
-      ...state,
-      viewMode: action.payload,
-    }))
+    // Add new Event
+    .addCase(
+      addEvent,
+      (state, action): State => ({
+        ...state,
+        items: [...state.items, action.payload],
+      })
+    )
+
+    // Update existing Event
+    .addCase(
+      updateEvent,
+      (state, action): State => ({
+        ...state,
+        items: state.items.map(event =>
+          event.id === action.payload.id ? action.payload : event
+        ),
+      })
+    )
+
+    // Select Category
+    .addCase(
+      selectCategory,
+      (state, action): State => ({
+        ...state,
+        category: action.payload,
+      })
+    )
+
+    // Select View mode
+    .addCase(
+      selectViewMode,
+      (state, action): State => ({
+        ...state,
+        viewMode: action.payload,
+      })
+    )
 )

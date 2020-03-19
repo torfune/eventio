@@ -51,6 +51,8 @@ const Description = styled.p`
   margin-top: 2rem;
   margin-bottom: 2rem;
   color: ${COLOR.GREY_TEXT_LIGHT};
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 const Owner = styled.p`
   color: ${COLOR.GREY_TEXT_DARK};
