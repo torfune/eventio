@@ -1,8 +1,13 @@
 import styled from 'styled-components'
-import { COLOR } from '../../constants'
+import { COLOR, BP } from '../../constants'
+import { FC } from 'react'
 
-const SignUpLink = () => (
-  <Container>
+interface Props {
+  className?: string
+}
+
+const SignUpLink: FC<Props> = ({ className }) => (
+  <Container className={className}>
     Don't have an account? <span>SIGN UP</span>
   </Container>
 )
@@ -12,6 +17,10 @@ const Container = styled.p`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media (max-width: ${BP.MOBILE}) {
+    display: none;
+  }
 
   > span {
     margin-left: 1rem;

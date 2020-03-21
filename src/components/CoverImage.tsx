@@ -3,34 +3,25 @@ import { COLOR } from '../constants'
 
 const CoverImage = () => (
   <Container>
-    <img src="/images/home.png" />
-
-    <TextSection>
-      <p>
-        “Great, kid. Don’t
-        <br />
-        get cocky.”
-      </p>
-      <span>Han Solo</span>
-    </TextSection>
+    <p>
+      “Great, kid. Don’t
+      <br />
+      get cocky.”
+    </p>
+    <span>Han Solo</span>
   </Container>
 )
 
 const Container = styled.div`
+  background: url('/images/home.png');
+  background-position: center;
+  background-size: cover;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-
-  > img {
-    height: 100vh;
-    z-index: 0;
-  }
-`
-const TextSection = styled.div`
-  position: absolute;
-  bottom: 10rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 10rem;
 
   > p {
     font-family: 'Playfair Display';
@@ -40,6 +31,9 @@ const TextSection = styled.div`
   }
 
   > span {
+    font-size: 1.8rem;
+    color: #888;
+
     ::before {
       content: '';
       display: block;
@@ -48,9 +42,6 @@ const TextSection = styled.div`
       background: ${COLOR.GREEN};
       margin: 2rem auto;
     }
-
-    font-size: 1.8rem;
-    color: #888;
   }
 `
 

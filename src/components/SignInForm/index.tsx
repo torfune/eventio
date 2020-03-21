@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import Input from '../Input'
 import Button from '../Button'
 import { useFormik } from 'formik'
-import { COLOR } from '../../constants'
+import { COLOR, BP } from '../../constants'
 import { RootState } from '../../store/rootReducer'
 import { useSelector, useDispatch } from 'react-redux'
 import { signOut, signIn, clearFailure } from '../../store/auth/actions'
 import validate from './validate'
+import SignUpLink from '../Header/SignUpLink'
 
 export type FormValues = typeof initialValues
 
@@ -77,6 +78,8 @@ const SignInForm = () => {
           submitFailed={auth.failed}
         />
 
+        <StyledSignUpLink />
+
         <SubmitButton
           size="big"
           color="green"
@@ -93,12 +96,30 @@ const SignInForm = () => {
 const Container = styled.div`
   width: 50rem;
 
+  @media (max-width: ${BP.MOBILE}) {
+    width: 100%;
+  }
+
   > form {
     margin-top: 4rem;
   }
 `
 const SubmitButton = styled(Button)`
   margin-top: 5rem;
+
+  @media (max-width: ${BP.MOBILE}) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+`
+const StyledSignUpLink = styled(SignUpLink)`
+  display: none;
+
+  @media (max-width: ${BP.MOBILE}) {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+  }
 `
 
 export default SignInForm

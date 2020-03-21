@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { COLOR } from './constants'
+import { COLOR, BP } from './constants'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     font-family: 'Hind', sans-serif;
     color: ${COLOR.GREY_TEXT_DARK};
+    overflow-x: hidden;
   }
 
   button, ul {
@@ -56,6 +57,15 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     margin: 0;
   }
+
+  h1 {
+    font-size: 3rem;
+    
+    @media (max-width: ${BP.MOBILE}) {
+      font-size: 2.5rem;
+    }
+  }
+
 
   h2 {
     color: ${COLOR.GREY_TEXT_LIGHT};

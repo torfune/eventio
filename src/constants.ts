@@ -13,3 +13,8 @@ export const COLOR = {
 export const HEADER_HEIGHT = '10rem'
 
 export const CARD_SHADOW = '0px 2px 4px #0000001f'
+
+export const BP = {
+  MOBILE: '800px',
+  TABLET: '1200px',
+}

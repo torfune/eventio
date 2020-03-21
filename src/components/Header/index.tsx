@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FC } from 'react'
-import { HEADER_HEIGHT } from '../../constants'
+import { HEADER_HEIGHT, BP } from '../../constants'
 import CenterSection from './CenterSection'
 import RightSection from './RightSection'
 
@@ -21,8 +21,11 @@ const Header: FC<Props> = ({
   rightSection,
 }) => (
   <Container background={backgroundColor}>
-    <div>
+    <div className="tablet-hide">
       <img src={`/icons/logo-${logoColor}.svg`} />
+    </div>
+    <div className="tablet-show">
+      <img src={`/icons/logo-dark.svg`} />
     </div>
 
     <CenterSection sectionName={centerSection} />
@@ -41,11 +44,35 @@ const Container = styled.div<{ background: string }>`
   height: ${HEADER_HEIGHT};
   z-index: 1;
 
+  @media (max-width: ${BP.TABLET}) {
+    padding: 0 3rem;
+  }
+
+  @media (max-width: ${BP.MOBILE}) {
+    padding: 0 2rem;
+  }
+
   > div:first-child {
     text-align: left;
 
     > img {
       height: 3rem;
+    }
+  }
+
+  .tablet-show {
+    display: none;
+
+    @media (max-width: ${BP.TABLET}) {
+      display: block;
+    }
+  }
+
+  .tablet-hide {
+    display: block;
+
+    @media (max-width: ${BP.TABLET}) {
+      display: none;
     }
   }
 `

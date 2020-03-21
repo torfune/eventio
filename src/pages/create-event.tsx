@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import { COLOR } from '../constants'
+import { COLOR, BP, HEADER_HEIGHT } from '../constants'
 import styled from 'styled-components'
 import Authorize from '../components/Authorize'
 import CreateEventForm from '../components/CreateEventForm'
@@ -24,6 +24,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: calc(${HEADER_HEIGHT} + 5rem) 2rem 2rem;
+
+  @media (max-width: ${BP.MOBILE}) {
+    display: block;
+    padding-top: calc(${HEADER_HEIGHT} + 5rem);
+  }
 `
 
 export default () => (

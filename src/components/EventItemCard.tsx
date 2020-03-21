@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FC } from 'react'
 import EventItem from '../api/types/EventItem'
-import { CARD_SHADOW, COLOR } from '../constants'
+import { CARD_SHADOW, COLOR, BP } from '../constants'
 import EventItemButton from './EventItemButton'
 
 interface Props {
@@ -37,6 +37,11 @@ const Container = styled.div`
   box-shadow: ${CARD_SHADOW};
   display: flex;
   flex-direction: column;
+
+  @media (max-width: ${BP.MOBILE}) {
+    width: 100%;
+    margin-right: 0;
+  }
 `
 const Title = styled.p`
   font-size: 2.4rem;

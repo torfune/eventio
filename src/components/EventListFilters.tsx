@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/rootReducer'
-import { COLOR } from '../constants'
+import { COLOR, BP } from '../constants'
 import { selectCategory, selectViewMode } from '../store/events/actions'
 import EventItemCategory from '../types/EventItemCategory'
 import EventListViewMode from '../types/EventListViewMode'
@@ -51,6 +51,22 @@ const EventListFilters = () => {
         ))}
       </ul>
 
+      <MobileCategorySelector>
+        <p>SHOW:</p>
+        <select
+          value={events.category}
+          onChange={({ target }) => {
+            dispatch(selectCategory(target.value as EventItemCategory))
+          }}
+        >
+          {CATEGORIES.map(({ key, label }) => (
+            <option key={key} value={key}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </MobileCategorySelector>
+
       <div>
         <ViewModeItem
           src="/icons/grid-view.svg"
@@ -70,11 +86,14 @@ const EventListFilters = () => {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4rem;
 
   > ul {
     display: flex;
     list-style: none;
+
+    @media (max-width: ${BP.MOBILE}) {
+      display: none;
+    }
   }
 `
 const CategoryItem = styled.li<{ active: boolean }>`
@@ -96,6 +115,20 @@ const ViewModeItem = styled.img<{ active: boolean }>`
 
   :first-child {
     margin-left: 0;
+  }
+`
+const MobileCategorySelector = styled.div`
+  display: none;
+
+  @media (max-width: ${BP.MOBILE}) {
+    display: flex;
+    align-items: center;
+
+    > p {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-right: 1rem;
+    }
   }
 `
 

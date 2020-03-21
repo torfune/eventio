@@ -5,6 +5,7 @@ import { RootState } from '../store/rootReducer'
 import EventItemCard from './EventItemCard'
 import EventListViewMode from '../types/EventListViewMode'
 import filterEventsByCategory from '../utils/filterEventsByCategory'
+import { BP } from '../constants'
 
 const EventList = () => {
   const { itemsLoading, items, category, viewMode } = useSelector(
@@ -29,6 +30,8 @@ const EventList = () => {
 }
 
 const Container = styled.div<{ viewMode: EventListViewMode }>`
+  margin-top: 4rem;
+
   > img {
     height: 6rem;
     display: block;
@@ -41,6 +44,10 @@ const Container = styled.div<{ viewMode: EventListViewMode }>`
       display: flex;
       flex-wrap: wrap;
       margin-right: -2rem;
+
+      @media (max-width: ${BP.MOBILE}) {
+        margin-right: 0;
+      }
     `}
 `
 

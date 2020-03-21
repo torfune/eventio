@@ -3,7 +3,7 @@ import Input from '../Input'
 import Button from '../Button'
 import { useFormik } from 'formik'
 import validate from './validate'
-import { CARD_SHADOW } from '../../constants'
+import { CARD_SHADOW, BP } from '../../constants'
 import { useDispatch } from 'react-redux'
 import { createEvent } from '../../store/events/actions'
 import createDate from '../../utils/createDate'
@@ -121,6 +121,10 @@ const Container = styled.div`
   text-align: center;
   position: relative;
   top: -4rem;
+
+  @media (max-width: ${BP.MOBILE}) {
+    width: 100%;
+  }
 
   > form {
     margin-top: 3rem;
