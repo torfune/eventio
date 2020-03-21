@@ -1,30 +1,98 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+# Eventio
 
-## Getting Started
+Eventio test project implementation created by Matěj Strnad using `React` and `Next.js`.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
+Use `npm` to install dependencies.
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available scripts
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Run for development:
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Build for production:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
+Run production build:
 
-## Deploy on ZEIT Now
+```
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run unit tests with Jest:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+npm test
+```
+
+Run ESLint:
+
+```
+npm run lint
+```
+
+Compile TypeScript:
+
+```
+npm run type-check
+```
+
+## Environment variables
+
+To run project locally you have to create `.env` file in a root directory with following variables:
+
+```
+APP_API_KEY=YOUR_STRV_API_KEY
+```
+
+## Testing
+
+I have written unit tests for `utils` functions and `redux` reducers. However, for future development I would also consider writing E2E tests using `Cypress` and component snapshot tests using `Jest` and `React Testing Library`.
+
+## CI/CD
+
+The project uses `GitHub Actions` to run tests, linter and typecheck in the cloud. Automatic deployment is setup using `Zeit Now`.
+
+## State management
+
+I decided to use `Redux` with the official [Redux Toolkit](https://redux-toolkit.js.org) library to handle global state management.
+
+## What needs to be done
+
+We now need to implement following features to finish the MVP:
+
+- Sign Up
+
+  - Use `CoverImageLayout` component
+  - Create form component with `Formik`
+  - Connect to `Redux` and `API`
+
+- Event Detail
+
+  - Create page/layout
+  - Use `EventItemCard` component
+  - Connect to `Redux` and `API`
+
+- My Profile
+
+  - Create page/layout
+  - Use `EventList` component
+  - Connect to `Redux` and `API`
+
+- Reset Password
+  - Haven't found any designs on that yet
+
+Last but not least, I would also recommend implementing an error handling mechanism for failed AJAX requests. Check out `React Error Boundaries`.
+
+Good luck.
