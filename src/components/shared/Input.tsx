@@ -56,7 +56,7 @@ const Container = styled.div<{ redBorder?: boolean }>`
   }
 
   > input:not(:placeholder-shown) + label {
-    transform: translateY(-2rem);
+    transform: translateY(-2.5rem);
     opacity: 0.7;
   }
 
