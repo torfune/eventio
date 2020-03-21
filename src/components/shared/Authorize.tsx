@@ -36,7 +36,7 @@ const Authorize: FC<Props> = ({ children }) => {
   } else {
     return (
       <Container>
-        <img src="/icons/spinner-dark.svg" />
+        <img src="/icons/spinner-dark.svg" alt="Loading ..." />
       </Container>
     )
   }

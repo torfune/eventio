@@ -5,7 +5,7 @@ const GoBackLink = () => (
   <Link href="/events">
     <a>
       <Container>
-        <img src="/icons/arrow-left.svg" />
+        <img src="/icons/arrow-left.svg" alt="Back" />
         <p>Back to events</p>
       </Container>
     </a>

@@ -15,7 +15,7 @@ const EventList = () => {
   return (
     <Container viewMode={viewMode}>
       {itemsLoading ? (
-        <img src="/icons/spinner-dark.svg" />
+        <img src="/icons/spinner-dark.svg" alt="Loading ..." />
       ) : (
         filterEventsByCategory(items, category).map(eventItem =>
           viewMode === 'grid' ? (

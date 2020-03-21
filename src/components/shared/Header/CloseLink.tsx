@@ -5,7 +5,7 @@ const CloseLink = () => (
   <Link href="/events">
     <a>
       <Container>
-        <img src="/icons/cross.svg" />
+        <img src="/icons/cross.svg" alt="Close" />
         <p>Close</p>
       </Container>
     </a>

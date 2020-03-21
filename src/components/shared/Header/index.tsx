@@ -22,10 +22,10 @@ const Header: FC<Props> = ({
 }) => (
   <Container background={backgroundColor}>
     <div className="tablet-hide">
-      <img src={`/icons/logo-${logoColor}.svg`} />
+      <img src={`/icons/logo-${logoColor}.svg`} alt="Logo" />
     </div>
     <div className="tablet-show">
-      <img src={`/icons/logo-dark.svg`} />
+      <img src={`/icons/logo-dark.svg`} alt="Logo" />
     </div>
 
     <CenterSection sectionName={centerSection} />

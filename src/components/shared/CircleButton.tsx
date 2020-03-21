@@ -9,7 +9,7 @@ interface Props {
 
 const CircleButton: FC<Props> = ({ className, iconSrc, backgroundColor }) => (
   <Container className={className} background={backgroundColor}>
-    <img src={iconSrc} />
+    <img src={iconSrc} alt="Button icon" />
   </Container>
 )
 

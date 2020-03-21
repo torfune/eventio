@@ -20,6 +20,10 @@ export default ({ Component, pageProps }: AppProps) => {
     <Provider store={store}>
       <Head>
         <title>Eventio</title>
+        <meta
+          name="description"
+          content="Eventio test project implementation created by Matěj Strnad using React and Next.js."
+        />
       </Head>
       <GlobalStyle />
       <Component {...pageProps} />

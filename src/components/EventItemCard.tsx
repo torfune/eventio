@@ -18,7 +18,7 @@ const EventItemCard: FC<Props> = ({ eventItem }) => (
 
     <BottomRow>
       <Capacity>
-        <img src="/icons/user.svg" />
+        <img src="/icons/person.svg" alt="Capacity" />
         <p>{`${eventItem.attendees.length} of ${eventItem.capacity}`}</p>
       </Capacity>
 

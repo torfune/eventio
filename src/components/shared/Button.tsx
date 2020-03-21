@@ -31,7 +31,11 @@ const Button: FC<Props> = ({
     size={size}
     onClick={onClick}
   >
-    {loading ? <img src="/icons/spinner-light.svg" /> : children}
+    {loading ? (
+      <img src="/icons/spinner-light.svg" alt="Loading ..." />
+    ) : (
+      children
+    )}
   </Container>
 )
 
