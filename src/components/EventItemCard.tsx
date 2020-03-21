@@ -3,6 +3,7 @@ import { FC } from 'react'
 import EventItem from '../api/types/EventItem'
 import { CARD_SHADOW, COLOR, BP } from '../constants'
 import EventItemButton from './EventItemButton'
+import formatDate from '../utils/formatDate'
 
 interface Props {
   eventItem: EventItem
@@ -10,9 +11,7 @@ interface Props {
 
 const EventItemCard: FC<Props> = ({ eventItem }) => (
   <Container>
-    <StartDate>
-      {new Date(eventItem.startsAt).toLocaleString('en-US')}
-    </StartDate>
+    <StartDate>{formatDate(eventItem.startsAt)}</StartDate>
     <Title>{eventItem.title}</Title>
     <Owner>{`${eventItem.owner.firstName} ${eventItem.owner.lastName}`}</Owner>
     <Description>{eventItem.description}</Description>

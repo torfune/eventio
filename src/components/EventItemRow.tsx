@@ -3,6 +3,7 @@ import { FC } from 'react'
 import EventItem from '../api/types/EventItem'
 import { COLOR, CARD_SHADOW, BP } from '../constants'
 import EventItemButton from './EventItemButton'
+import formatDate from '../utils/formatDate'
 
 interface Props {
   eventItem: EventItem
@@ -13,9 +14,7 @@ const EventItemRow: FC<Props> = ({ eventItem }) => (
     <Title>{eventItem.title}</Title>
     <Description>{eventItem.description}</Description>
     <Owner>{`${eventItem.owner.firstName} ${eventItem.owner.lastName}`}</Owner>
-    <StartDate>
-      {new Date(eventItem.startsAt).toLocaleString('en-US')}
-    </StartDate>
+    <StartDate>{formatDate(eventItem.startsAt)}</StartDate>
     <Capacity>{`${eventItem.attendees.length} of ${eventItem.capacity}`}</Capacity>
 
     <EventItemButton eventItem={eventItem} />
@@ -38,7 +37,7 @@ const Container = styled.div`
 
   @media (max-width: ${BP.MOBILE}) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 12rem;
   }
 
   > p {
