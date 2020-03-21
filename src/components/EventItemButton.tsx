@@ -15,7 +15,10 @@ const EventItemButton: FC<Props> = ({ eventItem }) => {
   const user = useSelector((state: RootState) => state.auth.user)
   const [loading, setLoading] = useState(false)
 
-  if (!user) return null
+  const currentDate = new Date()
+  const eventDate = new Date(eventItem.startsAt)
+
+  if (!user || currentDate > eventDate) return null
 
   const { text, color, action } = getEventButtonConfig(eventItem, user.id)
 
