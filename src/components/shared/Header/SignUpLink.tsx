@@ -8,7 +8,7 @@ interface Props {
 
 const SignUpLink: FC<Props> = ({ className }) => (
   <Container className={className}>
-    Don't have an account? <span>SIGN UP</span>
+    Don&apos;t have an account? <span>SIGN UP</span>
   </Container>
 )
 

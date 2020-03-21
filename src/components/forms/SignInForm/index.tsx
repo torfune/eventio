@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import { COLOR, BP } from '../../../constants'
 import { RootState } from '../../../store/rootReducer'
 import { useSelector, useDispatch } from 'react-redux'
-import { signOut, signIn, clearFailure } from '../../../store/auth/actions'
+import { signIn, clearFailure } from '../../../store/auth/actions'
 import validate from './validate'
 import SignUpLink from '../../shared/Header/SignUpLink'
 
