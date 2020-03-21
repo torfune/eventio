@@ -44,6 +44,10 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
   }
 
+  button, input {
+    font-family: 'Hind', sans-serif;
+  }
+
   button, ul {
     padding: 0;
   }
