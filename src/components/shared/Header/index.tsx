@@ -52,9 +52,11 @@ const Container = styled.div<{ background: string }>`
     padding: 0 2rem;
   }
 
+  /* Logo section */
   > div:first-child {
     text-align: left;
 
+    /* Logo image */
     > img {
       height: 3rem;
     }

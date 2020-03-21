@@ -17,6 +17,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: flex-end;
 
+  /* Arrow image */
   > img {
     position: relative;
     top: -0.1rem;
@@ -24,6 +25,7 @@ const Container = styled.div`
     height: 1.4rem;
   }
 
+  /* 'Go back' text */
   > p {
     font-weight: 500;
   }

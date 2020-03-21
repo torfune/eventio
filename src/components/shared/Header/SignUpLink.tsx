@@ -22,6 +22,7 @@ const Container = styled.p`
     display: none;
   }
 
+  /* 'Sign up' link */
   > span {
     margin-left: 1rem;
     font-weight: 600;

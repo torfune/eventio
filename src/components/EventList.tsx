@@ -32,12 +32,14 @@ const EventList = () => {
 const Container = styled.div<{ viewMode: EventListViewMode }>`
   margin-top: 4rem;
 
+  /* Spinner */
   > img {
     height: 6rem;
     display: block;
     margin: 10rem auto;
   }
 
+  /* Grid view */
   ${props =>
     props.viewMode === 'grid' &&
     css`

@@ -71,10 +71,12 @@ const Capacity = styled.div`
   display: flex;
   align-items: center;
 
+  /* Person icon */
   > img {
     height: 1.6rem;
   }
 
+  /* Capacity value */
   > p {
     margin-left: 1rem;
     color: ${COLOR.GREY_TEXT_LIGHT};

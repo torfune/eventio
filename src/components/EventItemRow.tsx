@@ -40,6 +40,7 @@ const Container = styled.div`
     grid-template-columns: 1fr 12rem;
   }
 
+  /* Every text column */
   > p {
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -61,6 +62,7 @@ const Container = styled.div`
     }
   }
 
+  /* Event action button */
   > button {
     margin-left: auto;
 

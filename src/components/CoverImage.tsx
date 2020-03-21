@@ -23,6 +23,7 @@ const Container = styled.div`
   justify-content: flex-end;
   padding-bottom: 10rem;
 
+  /* Quoted text */
   > p {
     font-family: 'Playfair Display';
     font-size: 4rem;
@@ -30,6 +31,7 @@ const Container = styled.div`
     opacity: 0.9;
   }
 
+  /* Text author */
   > span {
     font-size: 1.8rem;
     color: #888;

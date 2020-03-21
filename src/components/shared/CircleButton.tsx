@@ -25,6 +25,7 @@ const Container = styled.button<{ background: string }>`
   height: 6rem;
   box-shadow: 0px 0.4rem 0.8rem #00000044;
 
+  /* Icon */
   > img {
     height: 1.5rem;
   }

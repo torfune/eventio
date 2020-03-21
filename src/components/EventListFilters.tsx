@@ -87,6 +87,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
+  /* Desktop category menu */
   > ul {
     display: flex;
     list-style: none;
@@ -124,6 +125,7 @@ const MobileCategorySelector = styled.div`
     display: flex;
     align-items: center;
 
+    /* 'SHOW:' label */
     > p {
       font-size: 1.4rem;
       font-weight: 600;

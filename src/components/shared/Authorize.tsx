@@ -48,6 +48,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
 
+  /* Spinner */
   > img {
     position: relative;
     top: -12rem;

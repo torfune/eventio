@@ -49,6 +49,7 @@ const Container = styled.button<{ size: ButtonSize; color: ButtonColor }>`
   letter-spacing: ${props => (props.size === 'big' ? '0.2rem' : '0.1rem')};
   width: ${props => (props.size === 'big' ? '22rem' : '10rem')};
 
+  /* Spinner */
   > img {
     height: ${props => (props.size === 'big' ? '2.5rem' : '1.8rem')};
   }
