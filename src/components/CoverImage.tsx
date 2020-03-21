@@ -13,7 +13,7 @@ const CoverImage = () => (
 )
 
 const Container = styled.div`
-  background: url('/images/home.png');
+  background: url('/images/cover.png');
   background-position: center;
   background-size: cover;
   color: #fff;
