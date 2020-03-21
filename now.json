@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "APP_API_KEY": "@eventio-api-key"
+    }
+  }
+}
