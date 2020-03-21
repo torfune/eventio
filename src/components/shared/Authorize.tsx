@@ -1,9 +1,9 @@
 import { FC, useEffect, ReactNode } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../store/rootReducer'
-import { signOut, signInRefresh } from '../store/auth/actions'
+import { RootState } from '../../store/rootReducer'
+import { signOut, signInRefresh } from '../../store/auth/actions'
 import styled from 'styled-components'
-import StorageService from '../StorageService'
+import StorageService from '../../StorageService'
 import Router from 'next/router'
 
 interface Props {

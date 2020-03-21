@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { signOut } from '../../store/auth/actions'
+import { signOut } from '../../../store/auth/actions'
 import Router from 'next/router'
 
 const SignOutLink = () => {

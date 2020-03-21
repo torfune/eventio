@@ -1,9 +1,9 @@
 import EventItem from '../api/types/EventItem'
-import EventItemCategory from '../types/EventItemCategory'
+import EventCategory from '../types/EventCategory'
 
 const filterEventsByCategory = (
   events: EventItem[],
-  category: EventItemCategory
+  category: EventCategory
 ) => {
   if (category === 'all') return events
 

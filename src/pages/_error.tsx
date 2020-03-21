@@ -1,5 +1,5 @@
 import CoverImageLayout from '../layout/CoverImageLayout'
-import Button from '../components/Button'
+import Button from '../components/shared/Button'
 import styled from 'styled-components'
 import { BP } from '../constants'
 

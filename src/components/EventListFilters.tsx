@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../store/rootReducer'
 import { COLOR, BP } from '../constants'
 import { selectCategory, selectViewMode } from '../store/events/actions'
-import EventItemCategory from '../types/EventItemCategory'
+import EventCategory from '../types/EventCategory'
 import EventListViewMode from '../types/EventListViewMode'
 
-const CATEGORIES: Array<{ key: EventItemCategory; label: string }> = [
+const CATEGORIES: Array<{ key: EventCategory; label: string }> = [
   {
     label: 'ALL EVENTS',
     key: 'all',
@@ -25,7 +25,7 @@ const EventListFilters = () => {
   const dispatch = useDispatch()
   const events = useSelector((state: RootState) => state.events)
 
-  const categoryClickHandler = (category: EventItemCategory) => () => {
+  const categoryClickHandler = (category: EventCategory) => () => {
     if (events.category !== category) {
       dispatch(selectCategory(category))
     }
@@ -56,7 +56,7 @@ const EventListFilters = () => {
         <select
           value={events.category}
           onChange={({ target }) => {
-            dispatch(selectCategory(target.value as EventItemCategory))
+            dispatch(selectCategory(target.value as EventCategory))
           }}
         >
           {CATEGORIES.map(({ key, label }) => (

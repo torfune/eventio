@@ -1,4 +1,4 @@
-import Header from '../components/Header'
+import Header from '../components/shared/Header'
 import styled from 'styled-components'
 import CoverImage from '../components/CoverImage'
 import { BP, HEADER_HEIGHT } from '../constants'

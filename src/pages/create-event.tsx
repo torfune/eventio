@@ -1,8 +1,8 @@
-import Header from '../components/Header'
+import Header from '../components/shared/Header'
 import { COLOR, BP, HEADER_HEIGHT } from '../constants'
 import styled from 'styled-components'
-import Authorize from '../components/Authorize'
-import CreateEventForm from '../components/CreateEventForm'
+import Authorize from '../components/shared/Authorize'
+import CreateEventForm from '../components/forms/CreateEventForm'
 
 const CreateEventPage = () => (
   <>

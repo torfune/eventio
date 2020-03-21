@@ -1,13 +1,13 @@
 import styled from 'styled-components'
-import Input from '../Input'
-import Button from '../Button'
+import Input from '../../shared/Input'
+import Button from '../../shared/Button'
 import { useFormik } from 'formik'
-import { COLOR, BP } from '../../constants'
-import { RootState } from '../../store/rootReducer'
+import { COLOR, BP } from '../../../constants'
+import { RootState } from '../../../store/rootReducer'
 import { useSelector, useDispatch } from 'react-redux'
-import { signOut, signIn, clearFailure } from '../../store/auth/actions'
+import { signOut, signIn, clearFailure } from '../../../store/auth/actions'
 import validate from './validate'
-import SignUpLink from '../Header/SignUpLink'
+import SignUpLink from '../../shared/Header/SignUpLink'
 
 export type FormValues = typeof initialValues
 

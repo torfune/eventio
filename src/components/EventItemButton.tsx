@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from './shared/Button'
 import { FC, useState } from 'react'
 import getEventButtonConfig from '../utils/getEventButtonConfig'
 import { useSelector, useDispatch } from 'react-redux'

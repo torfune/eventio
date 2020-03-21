@@ -1,5 +1,5 @@
 import EventItem from '../api/types/EventItem'
-import { ButtonColor } from '../components/Button'
+import { ButtonColor } from '../components/shared/Button'
 
 interface ButtonConfig {
   text: string

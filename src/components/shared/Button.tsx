@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { COLOR } from '../constants'
+import { COLOR } from '../../constants'
 
 export type ButtonColor = 'green' | 'red' | 'grey'
 export type ButtonSize = 'big' | 'small'

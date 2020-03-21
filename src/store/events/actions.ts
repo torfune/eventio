@@ -2,7 +2,7 @@ import { createAction } from '@reduxjs/toolkit'
 import { AppThunk } from '..'
 import Api from '../../api'
 import EventItem from '../../api/types/EventItem'
-import EventItemCategory from '../../types/EventItemCategory'
+import EventCategory from '../../types/EventCategory'
 import EventListViewMode from '../../types/EventListViewMode'
 import CreateEventData from '../../types/CreateEventData'
 import StorageService from '../../StorageService'
@@ -10,7 +10,7 @@ import StorageService from '../../StorageService'
 // Action creators
 export const selectCategory = createAction(
   'events/selectCategory',
-  (category: EventItemCategory) => {
+  (category: EventCategory) => {
     StorageService.setCategory(category)
     return {
       payload: category,

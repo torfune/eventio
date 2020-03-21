@@ -1,4 +1,4 @@
-import EventItemCategory from './types/EventItemCategory'
+import EventCategory from './types/EventCategory'
 import EventListViewMode from './types/EventListViewMode'
 
 const REFRESH_TOKEN = 'refresh_token'
@@ -18,7 +18,7 @@ class StorageService {
   }
 
   // Category
-  static setCategory(category: EventItemCategory) {
+  static setCategory(category: EventCategory) {
     localStorage.setItem(EVENT_CATEGORY, category)
   }
   static getCategory() {

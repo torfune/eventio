@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { COLOR, BP } from '../../constants'
+import { COLOR, BP } from '../../../constants'
 import { FC } from 'react'
 
 interface Props {

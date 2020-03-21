@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FC } from 'react'
-import { HEADER_HEIGHT, BP } from '../../constants'
+import { HEADER_HEIGHT, BP } from '../../../constants'
 import CenterSection from './CenterSection'
 import RightSection from './RightSection'
 
