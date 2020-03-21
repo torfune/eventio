@@ -27,7 +27,6 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 50rem 1fr;
   height: 100vh;
-  overflow: hidden;
 
   @media (max-width: ${BP.TABLET}) {
     display: block;

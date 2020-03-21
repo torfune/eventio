@@ -105,7 +105,7 @@ const Container = styled.div`
   }
 `
 const SubmitButton = styled(Button)`
-  margin-top: 5rem;
+  margin: 4rem 0;
 
   @media (max-width: ${BP.MOBILE}) {
     margin-left: auto;
