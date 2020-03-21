@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { COLOR } from '../../constants'
 
 export type ButtonColor = 'green' | 'red' | 'grey'
@@ -13,6 +13,7 @@ interface Props {
   className?: string
   loading?: boolean
   type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
 }
 
 const Button: FC<Props> = ({
@@ -23,13 +24,15 @@ const Button: FC<Props> = ({
   size,
   color,
   onClick,
+  disabled,
 }) => (
   <Container
     className={className}
     type={type}
     color={color}
     size={size}
-    onClick={onClick}
+    onClick={!disabled ? onClick : undefined}
+    disabled={disabled}
   >
     {loading ? (
       <img src="/icons/spinner-light.svg" alt="Loading ..." />
@@ -39,7 +42,13 @@ const Button: FC<Props> = ({
   </Container>
 )
 
-const Container = styled.button<{ size: ButtonSize; color: ButtonColor }>`
+interface ContainerProps {
+  size: ButtonSize
+  color: ButtonColor
+  disabled?: boolean
+}
+
+const Container = styled.button<ContainerProps>`
   background: ${props => getBackgroundColor(props.color)};
   display: flex;
   justify-content: center;
@@ -65,6 +74,18 @@ const Container = styled.button<{ size: ButtonSize; color: ButtonColor }>`
   :focus {
     border: 0.1rem solid ${COLOR.GREY_TEXT_DARK};
   }
+
+  /* Disabled status */
+  ${props =>
+    props.disabled &&
+    css`
+      background: ${COLOR.GREY_BUTTON};
+      color: #fff;
+
+      :hover {
+        background: ${COLOR.GREY_BUTTON};
+      }
+    `}
 `
 
 const getBackgroundColor = (colorName: ButtonColor) => {

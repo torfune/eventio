@@ -15,12 +15,10 @@ const EventItemButton: FC<Props> = ({ eventItem }) => {
   const user = useSelector((state: RootState) => state.auth.user)
   const [loading, setLoading] = useState(false)
 
-  const currentDate = new Date()
-  const eventDate = new Date(eventItem.startsAt)
-
-  if (!user || currentDate > eventDate) return null
+  if (!user) return null
 
   const { text, color, action } = getEventButtonConfig(eventItem, user.id)
+  const isPastEvent = new Date() > new Date(eventItem.startsAt)
 
   const handleButtonClick = async () => {
     if (loading) return
@@ -46,6 +44,7 @@ const EventItemButton: FC<Props> = ({ eventItem }) => {
       color={color}
       loading={loading}
       onClick={handleButtonClick}
+      disabled={isPastEvent}
     >
       {text}
     </Button>
