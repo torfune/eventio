@@ -2,6 +2,10 @@
 
 Eventio test project implementation created by Matěj Strnad using `React` and `Next.js`.
 
+## Live demo
+
+https://eventio.torfune.now.sh
+
 ## Installation
 
 Use `npm` to install dependencies.
