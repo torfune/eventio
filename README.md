@@ -1,6 +1,4 @@
-# Eventio
-
-Eventio test project implementation created by Matěj Strnad using `React` and `Next.js`.
+Prototype app created for STRV interview process. Created by Matěj Strnad using `TypeScript/React`.
 
 ## Live demo
 
